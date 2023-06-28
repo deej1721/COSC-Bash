@@ -1,6 +1,72 @@
+//GEN INFO
 //CTFD - 10.50.34.146, TADA-M-505, dj@dt2.net, S00kie!!!Q467912
 //DOWNLOAD ALL GITHUB MATERIAL BEFORE TEST DAY
 //STILL DO THE FOLLOWING:
 //ssh -X student@10.50.41.179
  37 //HOW TO ssh to vta box
  38 //terminator
+------------------------------------------------------------------------------------------------------------
+QUICK REFERENCE:
+history - HISTORY OF COMMANDS
+!! - RUN LAST COMMAND
+!# - RUN COMMAND IN HISTORY REFERENCED BY NUMBER
+ctrl + LFT OR RHT ARROW - SCRUB BY WORDS THROUGH A COMMAND BEING WRITTEN
+ctrl + u ERASES LINE
+ctrl + r SEARCHES HISTORY, START TYPING 
+ctrl + l CLEAR SCREEN
+REMEMBER MAN PAGE!! man <cmd> 
+ / (FWD SLASH) TO SEARCH MAN PAGE!!!
+REMEMBER TAB AND AUTOCOMPLETE!!!
+REMEMBER GOOGLE!!!
+cht.sh - QUICK REFERENCE WEBPAGE DESIGNED TO WORK IN CMDLINE
+curl https://cht.sh/
+curl - CMD TO ACCESS WEBPAGE
+curl https://cht.sh/[CMD OR WHAT YOU WANT TO KNOW]
+ls - list files, -l (long) (note permissions in furthest left field)
+mkdir - make directory
+rm - remove, -r (recursive)
+echo ~ OR echo $HOME (show home directory), (~ = quick reference for home), ($HOME holds variable for where "home" is)
+pwd - print working directory
+cat - view file, cat pass
+head - view top 10 line by default
+tail - view last 10 lines by default
+ls .. - RELATIVE FILEPATH
+locate find - SEARCHES FILES BASED ON KEYWORD
+whereis find - DISPLAYS WHERE A CMD IS EXECUTED FROM
+find *.exe - FIND ALL FILES WITH ".exe" ENDING, REPLACE FILE EXTENSION WITH WHATEVER DESIRED
+find / -name "*.bin"
+iname - CASE INSENSITIVE VERSION OF name
+find . -type f -exec file '{}' \;
+ RUNS 'file' ON EVERY FILE IN OR BELOW THE CURRENT DIR, NOTE BRACES ARE ENLCOSED IN SINGLE QUOTES TO PROTECT THEM FROM
+ INTERPRETATION AS SHELL SCRIPT PUNCTUATION 
+find -mtime 2 - LOOK FOR ANYTHING MODIFIED WITHIN LAST TWO DAYS
+find / -empty - FINDS ALL EMPTY FILES
+find / -empty -maxdepth2 - FINDS ALL EMPTY FILES UP TO A DEPTH OF TWO SUB-DIRECTORIES
+find / - executable - FINDS ALL EXECUTABLES
+! - EXCLUDE THE FOLLOWING
+grep - LOOK FOR PATTERNS
+cat /etc/passwd -LOOK IN PASSWD FILE
+grep student /etc/passwd  -SEARCH FOR "student" WITHIN THE "/etc/passwd" FILE
+grep <pattern> <file> IS PROPER SYNTAX
+cat /etc/passwd | grep root - WORKS SIMILAR TO LINE 49, BUT SEARCHES FOR "root" 
+egrep - BETTER GREP, egrep "root|student" FOR EXAMPLES (CAN PASS VARIABLES AND LOGIC TO egrep)
+cat /etc/passwd | egrep "^[a-zA-Z]" (REGEX EXAMPLE)
+grep - o OR egrep - o - ONLY GRAB THE MATCHING PARTS OF THE LINES
+grep -v OR egrep -v - EXCLUDE MATCHES
+grep -A# -AFTER LAST MATCH, PRINT THE FOLLOWING NUMBER OF LINES
+grep -B# - BEFORE LAST MATCH, PRINT THE FOLLOWING NUMBER OF LINES
+grep -C# -PRINT LINES BEFORE AND AFTER FIRST AND LAST MATCH
+ps - WHAT IS CURRENT USER RUNNING
+ps -elf - EVERYTHING RUNNING
+ps -elf --forest -EVERYTHING RUNNING, ORGANIZED BASED ON PARENT-CHILD RELATIONSHIPS (CHILD PROCESSES)
+PS  - ELF | GREP BANNER
+killall (str) - KILL ALL SEARCHED BY KEYWORD, "killall firefox" FOR EXAMPLE
+touch test.1
+touch test.2
+echo one > test.1
+// > = REDIRECT TO FILE, IF NONEXISTENT, CREATE FILE
+echo one >> test.1
+cat test.1
+------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------
