@@ -132,3 +132,10 @@ cat sedwhat.txt | sed 's/ANCHOVIES/SAUSAGE/g'
 sed -e 's/ANCHOVIES/SAUSAGE/g' -e 's/anchovies/SAUSAGE/g' sedwhat.txt //REPLACES THE FORMER WITH THE LATTER
 sed '/pizza/d' sedwhat.txt //DELETES ALL LINES WITH pizza IN IT
 //sed 's+pizza+sandwhich+' sedwhat.txt //REPLACES PIZZA WITH SANDWHICH
+------------------------------------------------------------------------------------------------------------
+Activity: Using Brace-Expansion, create the following directories within the $HOME directory:
+  ANSWER: mkdir ~/{1123,1134,1145,1156} 
+Activity: Use Brace-Expansion to create the following files within the $HOME/1123 directory. 
+You may need to create the $HOME/1123 directory. Make the following files, but utilze Brace Expansion to make all nine files with one touch command.
+  ANSWER: mkdir ~/1123, touch ~/1123/{1,2,3,4,5,6~,7~,8~,9~}.txt
+
