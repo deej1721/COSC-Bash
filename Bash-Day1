@@ -75,6 +75,56 @@ tail passwd | cut -d: -f3
 //CUT OUTPUT OF tail passwd (LAST 10 LINE OF FILE) DOWN TO ONLY CERTAIN FIELDS, IN THIS CASE FIELD 3
 grep root passwd | cut -d: -f1
 //FOR ANY LINE WITH "root" PRINT FIELD 1
+touch file{a,b,c}.txt
+//CREATES THREE FILES WITH THE .txt EXTENSION
+touch file{1..10}.txt
+//CREATES FILES 1-10 WITH .txt EXTENSION
+CMD <ARGUMENT>{} ALLOWS YOU TO PUT MULTIPLE INPUTS IN ONE LINE AS SEEN ABOVE
+tail /etc/passwd | awk -F :v NUM="1000" '($3 >= NUM ) {print $3}'
+//awk ALLOWS FOR COMPARISON BY DIFFERENT FIELDS
+sort <file>
+//SORTS ALPHANUMERICALLY BY DEFAULT, PER CHARACTER, SO 10 WOULD COME BEFORE 3, SO 1,11,12,2,3,41,5,A,ABC,B,C
+(()) - DEFINES MATH WITH EXPRESSION IN THE MIDDLE
+sort -nu (SORT NUMERICALLY WITH NON-NUMERIC VALUES BEFORE NUMBERS, THEN NUMERICALLY)
+cat <file> | sort | uniq -c | sort -nr
+//CAT CONTENTS, SORT WITH UNIQUE COUNT, NUMERICALLY SORT IN REVERSE BY COUNT 
 ------------------------------------------------------------------------------------------------------------
-
+//SCRIPT /FUNCTION CREATION
+vim test.sh
+#!/bin/bash
+if [[condition]]; then
+ #do these commands
+elif[[condition]]; then
+ #do these cmmands
+else
+ #do this instead if no other conditions are met
+if [[ -f /etc/passwd ]]; then //IF THAT FILE EXISTS
+ echo "/etc/passwd file exists"
+elif [[ ! -f /etc/passwd ]]; then //IF THAT FILE DOES NOT EXIST
+ echo "/etc/passwd file does NOT exist"
+else
+ echo "something went wrong :("
+fi
+chmod +x test.sh //ASSIGNING EXECUTABLE PERMISSION TO FILE
+./<SCRIPT FILE> 
+//LINUX DOESN'T CARE ABOUT TABS GENERALLY, UNLIKE PYTHON
+(()) = MATH, AS AFOREMENTIONED, () = COMMAND IN SUBSHELL!!!
+vim matthtest.sh
+#!/bin/bash
+if [[ 3129 == $(( 15645/5 )) ]]; then
+ echo "math checks out"
+else
+ echo "no good"
+chmod +x mathtest.sh
+./<SCRIPT FILE>
+vim 
+alias PRINTS OUT ALL CURRENT ALIASES, SET BY .bashrc
+a=test
+echo $a WILL RETURN test WITHIN THAT SHELL UNLESS SAVED INTO THE .bashrc FILE
 ------------------------------------------------------------------------------------------------------------
+SCRIPT GENERAL NOTES
+== FOR STRINGS
+-eq FOR NUMBERS
+-le LESS THAN, EQUAL TO
+-ge GREATER THAN, EQUAL TO
+ITS BACKWARDS, YEAH
