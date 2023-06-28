@@ -128,3 +128,7 @@ SCRIPT GENERAL NOTES
 -le LESS THAN, EQUAL TO
 -ge GREATER THAN, EQUAL TO
 ITS BACKWARDS, YEAH
+cat sedwhat.txt | sed 's/ANCHOVIES/SAUSAGE/g'
+sed -e 's/ANCHOVIES/SAUSAGE/g' -e 's/anchovies/SAUSAGE/g' sedwhat.txt //REPLACES THE FORMER WITH THE LATTER
+sed '/pizza/d' sedwhat.txt //DELETES ALL LINES WITH pizza IN IT
+//sed 's+pizza+sandwhich+' sedwhat.txt //REPLACES PIZZA WITH SANDWHICH
