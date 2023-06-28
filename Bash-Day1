@@ -67,6 +67,14 @@ echo one > test.1
 // > = REDIRECT TO FILE, IF NONEXISTENT, CREATE FILE
 echo one >> test.1
 cat test.1
+find / -name *.bin 2>error.log
+//SEND ALL ERROR MESSAGES TO error.log
+find / -name *.bin 2> /dev/null
+//SEND ALL ERRORS TO TRASH ESSENTIALLY
+tail passwd | cut -d: -f3
+//CUT OUTPUT OF tail passwd (LAST 10 LINE OF FILE) DOWN TO ONLY CERTAIN FIELDS, IN THIS CASE FIELD 3
+grep root passwd | cut -d: -f1
+//FOR ANY LINE WITH "root" PRINT FIELD 1
 ------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------
