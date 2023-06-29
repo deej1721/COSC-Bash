@@ -139,6 +139,7 @@ pizza is good
 s first indicates substiti
 sed 
 ------------------------------------------------------------------------------------------------------------
+CTFD CHALLENGES 1-14
 Activity: Using Brace-Expansion, create the following directories within the $HOME directory:
   ANSWER: mkdir ~/{1123,1134,1145,1156} 
 Activity: Use Brace-Expansion to create the following files within the $HOME/1123 directory. 
@@ -152,14 +153,19 @@ Activity: List all files in $HOME/1123 that end in .txt. Omit the files containi
   ANSWER: find ~/1123/*.txt ! -path '*~.txt'
 Activity: Copy all files in the $HOME/1123 directory, that end in ".txt", and omit files containing a tilde "~" character, to directory $HOME/CUT.
  ANSWER: find ~/1123/*.txt ! -path '*~.txt' -exec cp {} ~/CUT \;
+ INSTRUCTOR SOLUTION: find $HOME/1123 -iname "*.txt" ! -iname "*~*" -exec cp {} $HOME/CUT \;
+ ALT INST SOLUTION: cp $HOME/1123/*[^~].txt $HOME/CUT
 Activity: Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
   ANSWER: find /var -empty -printf '%i %f\n'
+  INSTRUCTOR SOLUTION: SEE ABOVE!!!
 Activity: Using ONLY the find command, find all files on the system with inode 4026532575 and print only the filename to the screen, not the absolute path to the file, separating each filename with a newline. Ensure unneeded output is not visible.
   ANSWER: find / -inum 4026532575 -printf '%i %f\n'
+  INSTRUCTOR SOLUTION: find / inum 4026532575 -printf '%f\n' 2>/dev/null
 Activity:Using only the ls -l and cut Commands, write a BASH script that shows all filenames with extensions ie: 1.txt, etc., but no directories, in $HOME/CUT.
 Write those to a text file called names in $HOME/CUT directory.
 Omit the names filename from your output.
   ANSWER: ls -l ~/CUT/ | cut -d':' -f2 | cut -d' ' -f2 | cut -d '.' -f1- -s > ~/CUT/names
+  INSTRUCTOR SOLUTION: ls -l | cut -d. -f1- -s | cut -d: -f2 | cut -d" " -f2 > ~/CUT/names
 Activity: Write a basic bash script that greps ONLY the IP addresses in the text file provided (named StoryHiddenIPs in the current directory); sort them uniquely by number of times they appear.
   ANSWER: grep -E -o '(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)' StoryHiddenIPs | sort | uniq -c | sort -nr
 Activity: Using ONLY the awk command, write a BASH one-liner script that extracts ONLY the names of all the system and user accounts that are not UIDs 0-3.
