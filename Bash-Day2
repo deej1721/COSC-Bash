@@ -1,0 +1,66 @@
+//BASH VARIABLES AND PARAMETERS
+A=120
+echo $A
+//THIS WILL OUTPUT 120 AS A HAS BEEN ASSIGNED THE VALUE OF 120
+B=20
+expr $A-$B
+//THIS WILL RETURN 100 AS 120-20=100, AND expr ALLOWED THE MATH TO OCCUR
+C=$(expr $A-$B)
+//THIS WILL RETURN C, WHICH HAS BEEN THE VALUE OF 100 BY THE COMMAND SUBSTITUTION ALLOWED BY =$(CMD OR WHATEVER YOU WANT TO HAPPEN TO ASSIGN VALUE TO THE VARIABLE)
+echo $# - NUMBER OF ARGUMENTS PASSED IN CURRENT SCRIPT 
+echo $0
+echo $* - THE CONTENTS OF ALL ARGUMENTS PASSED IN CURRENT SCRIPT
+echo $$ - PID OF CURRENT SHELL
+echo $- - FLAGS SET IN SHELL
+echo $2...3 - A SPECIFIC ARGUMENT PASSED IN THE SHELL LISTED OUT AND REFERENCD BY NUMBER IN WHICH IT OCCURED 
+FLAGS:
+H - HISTEXPAND
+m - MONITOR
+h -  HASHALL
+B - BRACEXPAND
+i - INTERACTIVE
+./TestScript.sh $A1
+---
+//FUNCTION DECLARATION:
+#!/bin/bash
+  function myFunction{
+    Echo "this is myFunction"
+}
+myfunc(){
+    Echo "myfunc"
+}
+function aFunc(){
+Echo "Another function"
+}
+myFunction
+myFunc
+aFunc
+---
+//GATHERING USER INPUT:
+#!/bin/bash
+function getuserchoice(){
+  echo "Make a choice [1,2,3]:"
+  read userchoice
+  case $userchoice in 
+    (1) echo one;;
+    (2) echo two;;
+    (3) echo three;;
+    (*) echo other;;
+  esac
+}
+getuserchoice
+-----
+VARIABLE SUBSTIUTION:
+#!/bin/bash
+A=$1
+echo The story of Robert the $A
+echo The $A was at the $Astore so we could buy $A clothes!
+-
+chmod +x var_sub.sh
+./var_sub.sh blue
+RETURNS 
+echo The story of Robert the blue
+echo The blue was at the so we could buy blue clothes!
+//ASSIGNING A VARIABLE TO $1 ALLOWS THE VALUE TO BE PASSED TO THE SCRIPT BY THE USER AT SCRIPT EXECUTION
+//NOTICE HOW $Astore DID NOT PRINT AS IT DID NOT EXIST AS A VALUE AND COULD NOT BE DECIPHERED
+    "$A"store WOULD HAVE ALLOWED THE VALUE TO PRINT, '$A'store WOULD HAVE RETURNED '$A'store LITERALLY
