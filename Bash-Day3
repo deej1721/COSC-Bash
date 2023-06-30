@@ -1,0 +1,45 @@
+LOOPS:
+#!/bin/bash
+t1(){
+#BASIC COUNTING LOOP:
+  for x in {0..10} do
+  echo $x
+done
+}
+t2() {
+  #COUNTING WHILE LOOP:
+  x=0
+  while [[ $x -le '10' ]] ; do 
+    echo $x
+    x=$(($x+1))
+  done
+}
+t3() {
+  #A MODIFIED COUNTING WHILE LOOP:
+  x=0
+  while [[ $x -le 10 ]] ; do 
+    echo $x
+    x=$(($x+1))
+    if [[$x -gt 8 ]] ; then
+      break
+    fi
+  done
+}
+t4() {
+  #A SECOND MODIFIED COUNTING WHILE LOOP:
+  x=0
+  while [[ $x -le 10 ]] ; do 
+    echo $x
+    x=$(($x+1))
+    if [[$x == eight ]] ; then
+      break
+    fi
+  done
+}
+t1
+  RETURNS 0-10 ON SEPERATE LINES BECAUSE IT IS JUST PRINTING THE RANGE OF 0-10, COULD PRINT ANYTHING YOU TELL IT
+t2
+  RETURNS 0-10 ON SEPERATE LINES BECAUSE IT WAS TOLD TO STOP WHEN X IS NO LONGER LESS THAN TEN
+t3
+  RETURNS 0-8 AS THE LOOP WAS TOLD TO TERMINATE THE LOOP ONCE X IS GREATER THAN 8
+t4 RETURNS 0-10 AS X IS NEVER EQUIVALENT IN THIS EXAMPLE TO THE STRING EIGHT; THIS EXAMPLE EXISTS TO DISPLAY POTENTIAL STRING COMPARISON
