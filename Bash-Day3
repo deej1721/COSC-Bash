@@ -54,3 +54,48 @@ t5
   RETURNS SAME VALUES AS t1, BUT WITH THE ADDED CONSIDERATION OF THE NEW VARIABLE, THE RESULT OF THE COMMAND SUBSTITUTION DISPLAYED
 ------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES 20-25:
+dir=~/.ssh
+if [ -d "$dir" ];
+then
+    cp -r ~/.ssh ~/SSH
+else
+    echo "Run ssh-keygen"
+fi
+
+A=$(ip route | awk '/^default/{print $3}')
+B=$(which ping)
+C=$($B -c6 $A)
+if [[ $C == *"6 received"* ]]; then
+   echo "successful";
+else
+   echo "failure";
+fi
+
+mkdir ~/ZIP
+cd ~/ZIP
+touch file{1,2,3}
+echo  "12345" | md5sum | cut -d" " -f1 > file1 
+echo "6789" | md5sum | cut -d" " -f1 > file2
+echo "abcdef" | md5sum | cut -d" " -f1 > file3 
+zip file.zip file1 file2 file3
+tar -cvzf file.tar.gz file.zip
+
+file=$(head -1 $HOME/passwd)
+for x in LARRY CURLY MOE ;
+do
+    uidgid=$(cat $HOME/$x.txt)
+echo $file | awk -F: -v "namefile=$x" -v "d=$uidgid" 'BEGIN {OFS=":"} {$1=namefile} {$3=d} {$4=d} {$6="$HOME/"namefile}                
+{$NF="/bin/bash"} {print $0}' >> $HOME/passwd
+mkdir $x
+done
+
+for x in $(stat -c '%a' $(find /etc -type f)) ;
+do
+    if [[ $x -ge 642 ]] ; then
+        echo $x >> high.txt
+    else 
+        echo $x >> low.txt
+fi
+done
+echo "Files w/ OCTAL Perm Values 642+:\n$(sort high.txt | uniq -c | sort -nr)\n"
+echo "Files w/ OCTAL Perm Values 0-640:\n$(sort low.txt | uniq -c | sort -nr)"
