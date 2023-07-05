@@ -54,7 +54,9 @@ t5
   RETURNS SAME VALUES AS t1, BUT WITH THE ADDED CONSIDERATION OF THE NEW VARIABLE, THE RESULT OF THE COMMAND SUBSTITUTION DISPLAYED
 ------------------------------------------------------------------------------------------------------------
 CTFD CHALLENGES 20-25:
-Activity: Design a script that detects the existence of directory: $HOME/.ssh
+Activity: 
+
+Design a script that detects the existence of directory: $HOME/.ssh
 Upon successful detection, copies any and all files from within the directory $HOME/.ssh to directory $HOME/SSH and produce no output. You will need to create $HOME/SSH.
 Upon un-successful detection, displays the error message "Run ssh-keygen" to the user.
 ANSWER:
@@ -89,7 +91,15 @@ else
 fi
 
 INSTRUCTOR SOLUTION:
-
+ip route | awk '/^default/{print $3}'
+RESULTS=$($(which ping) -c6 $(ip route | awk '/default/{print $3}') | awk '/loss/{print $6}')
+echo $RESULTS
+  if [[ $RESULTS == '0%' ]]; then
+    echo successful 
+else
+  echo failure
+fi
+//awk = PATTERN EXPRESSION SEARCH TOOL, SEARCH FOR PATTERN WITH '/PATTERN/'{ACTION YOU WANT ENACTED WHEN PATTERN FOUND}'
 ------------------------------------------------------------------------------------------------------------
 Activity: 
 Create the following files in a new directory you create $HOME/ZIP:
@@ -111,7 +121,13 @@ zip file.zip file1 file2 file3
 tar -cvzf file.tar.gz file.zip
 
 INSTRUCTOR SOLUTION:
-
+mkdir $HOME/ZIP
+echo "12345" | md5sum | cut -d " " -f1 > $/HOME/ZIP/file1
+echo "6789" | md5sum | cut -d " " -f1 > $/HOME/ZIP/file2
+echo "abcdef" | md5sum | cut -d " " -f1 > $/HOME/ZIP/file3
+zip -j $/HOME/ZIP file.zip $HOME/ZIP/file{1,2,3}
+tar -czf $HOME/ZIP/tar.gz -C $/HOME/file.zip
+//TAR -C FOR ARCHIVING WITHIN DIRECTORIES
 ------------------------------------------------------------------------------------------------------------
 Activity:
 Design a basic FOR Loop that iteratively alters the file system and user entries in a passwd-like file for new users: LARRY, CURLY, and MOE.
@@ -134,7 +150,11 @@ mkdir $x
 done
 
 INSTRUCTOR SOLUTION:
-
+rootline=$(head -1 $/HOME/passwd)
+for x in {LARRY,CURLY,MOE} ; do
+  mkdir $HOME/$x
+  echo $rootline | awk -F: -v username=$x -v uidgid=$(cat $/HOME/$x.txt) 'BEGIN {OFS="."} {$1=user} {$3=uigi} {$4=uigi} { $6="$HOME/"user} {print $0}' >> $HOME/passwd
+done
 ------------------------------------------------------------------------------------------------------------
 Activity:
 
@@ -156,5 +176,17 @@ echo "Files w/ OCTAL Perm Values 642+:\n$(sort high.txt | uniq -c | sort -nr)\n"
 echo "Files w/ OCTAL Perm Values 0-640:\n$(sort low.txt | uniq -c | sort -nr)"
 
 INSTRUCTOR SOLUTION:
-
+find /etc -type f -exec stat -c '%a" {} \; >  ./A 2>/dev/null
+for x in $(cat ./A) ; do
+  if [[ $x -le 640 ]]; then
+    echo "$x" >> ./low.txt
+  elif [[ $x -ge 642 ]] ; then
+  echo "$" >> ./high.txt
+  fi
+done
+echo "Files w/ OCTAL Perm Values 642+:"
+cat high.txt | sort | uniq -c | sort -nr)
+echo "Files w/ OCTAL Perm Values 0-640:"
+cat low.txt | sort | uniq -c | sort -nr)
+rm {low,high}.txt
 ------------------------------------------------------------------------------------------------------------
