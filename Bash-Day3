@@ -190,3 +190,8 @@ echo "Files w/ OCTAL Perm Values 0-640:"
 cat low.txt | sort | uniq -c | sort -nr)
 rm {low,high}.txt
 ------------------------------------------------------------------------------------------------------------
+a=test //RETURNS test
+a=$(stat passwd) //RETURNS OUTPUT OF stat passwd CMD
+sed 's/forever/nevermore/' fileName
+//SUBSTITUTES FIRST OCCURENCE OF forever WITH nevermore IN THE FILE fileName BECAUSE OF THE s/ OPTION AT THE START OF THE CMD ARGUMENT, /g WOULD DO THIS FOR ALL OCCURENCES 
+//DOES NOT CHANGE CONTENTS OF FILE, ONLY SHOWS THE FILE WITH THE REPLACED STRINGS!!! -i OPTION WILL DO THIS THOUGH, AND /d DELETES 
