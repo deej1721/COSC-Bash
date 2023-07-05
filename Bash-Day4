@@ -18,7 +18,7 @@ sed -e 's/cat/dog/g' -e 's/Navy/Army/g' $1 > $2
 
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE!!! INSTEAD, $infile AND $outfile WERE USED, HOWEVER
 ------------------------------------------------------------------------------------------------------------
 Activity 2:
 Create a script that will print to standard output all user names from the /etc/passwd file.
@@ -28,7 +28,7 @@ function q1()
 awk -F':' '{print $1}' < /etc/passwd
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE, AS ANSWER WAS NOT FURTHER SPECIFIED IN COURSE OF INSTRUCTION
 ------------------------------------------------------------------------------------------------------------
 Activity 3:
 Create a script that will perform the following actions:
@@ -43,7 +43,7 @@ function q1()
 sort -t: -nk3 $1 | awk -F':' '{print $1}' 
 }
 INSTRUCTOR SOLUTION:
-
+sort -n -t: -k3 $filename | cut -d':' -f1
 ------------------------------------------------------------------------------------------------------------
 Activity 4:
 Create a script that will perform the following actions:
@@ -59,7 +59,7 @@ function q1()
 ls -1 $1 | wc -l
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE, BUT $dirname WAS USED INSTEAD!!!
 ------------------------------------------------------------------------------------------------------------
 Activity 5:
 Create a script that will perform the following actions:
@@ -74,7 +74,7 @@ function q1()
 rm -rf $1
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE, AS ANSWER WAS NOT FURTHER SPECIFIED IN COURSE OF INSTRUCTION
 ------------------------------------------------------------------------------------------------------------
 Activity 6:
 Create a script that will perform the following actions:
@@ -89,7 +89,7 @@ function q1()
 touch -t "$21730" $1
   }
 INSTRUCTOR SOLUTION:
-
+REMEMBER TO "$variable"1730 RATHER THAN WHAT I DID, IT SHOULD NOT HAVE WORKED!!!
 ------------------------------------------------------------------------------------------------------------
 Activity 7:
 Read the file specified by fname and perform an action based on the contents of the file:
@@ -114,7 +114,7 @@ else
 fi
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE, BUT WITH INITIAL VARIABLE ASSIGNMENT cont="cat $fname" AND -lt 10,100,1000 etc... RATHER THAN -le 9,99,999 etc... WAS USED
 ------------------------------------------------------------------------------------------------------------
 Activity 8:
 Copy all lines from the file specified by src variable to the file specified by dst variable which DO NOT contain the text specified by match variable.
@@ -130,7 +130,10 @@ grep -v "$3" $1 >> $2
 
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE!!!
+#EXAMPLE - NON SOLUTION:
+grep -v loopback StoryHiddenIps > FixedDoc
+cat Fixed // SHOULLD RETURN StoryHiddenIps BUT WITH ALL INSTANCES OF loopback REMOVED!!!
 ------------------------------------------------------------------------------------------------------------
 Activity 9:
 Terminate the process that has the randomly assigned name specified by procname variable. procname does not contain path information.
@@ -143,7 +146,7 @@ function q1()
 pkill $1
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE, BUT $procname WAS USED INSTEAD!!!
 ------------------------------------------------------------------------------------------------------------
 Activity 10:
 Create a sorted full-path list of all files in the directory dirpath that were modified within the previous day. 
@@ -159,5 +162,5 @@ find $1 -type f -mtime -1 | sort
   #Your code here
 }
 INSTRUCTOR SOLUTION:
-
+SEE ABOVE, BUT $dirpath WAS USED INSTEAD!!!
 ------------------------------------------------------------------------------------------------------------
